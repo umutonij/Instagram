@@ -23,7 +23,7 @@ class tags(models.Model):
 
     def __str__(self):
         return self.name
-class Article(models.Model):
+class Image(models.Model):
     title = models.CharField(max_length=60)
     post = HTMLField()
     user = models.ForeignKey(User,on_delete=models.CASCADE) 
@@ -32,20 +32,17 @@ class Article(models.Model):
     article_image = models.ImageField(upload_to='articles/', blank=True)
 
     @classmethod
-    def todays_news(cls):
+    def todays_photos(cls):
         today = dt.date.today()
-        news = cls.objects.filter(pub_date__date = today)
-        return news
+        photos = cls.objects.filter(pub_date__date = today)
+        return photos
 
     @classmethod
-    def days_news(cls,date):
-        news = cls.objects.filter(pub_date__date = date)
-        return news 
+    def days_photos(cls,date):
+        photos = cls.objects.filter(pub_date__date = date)
+        return photos 
     @classmethod
     def search_by_title(cls,search_term):
-        news = cls.objects.filter(title__icontains=search_term)
-        return news
+        photos = cls.objects.filter(title__icontains=search_term)
+        return photos
 
-class NewsLetterRecipients(models.Model):
-    name = models.CharField(max_length = 30)
-    email = models.EmailField() 
