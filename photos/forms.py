@@ -8,7 +8,7 @@ class PhotosLetterForm(forms.Form):
 class NewImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['profile']
-        widgets = {
-            'profile': forms.CheckboxSelectMultiple(),
-        }
+        exclude = ['user']
+        # widgets = {
+        #     'profile': forms.CheckboxSelectMultiple(),
+        # }

@@ -49,12 +49,6 @@ class Image(models.Model):
 
     def save_image(self):
     	self.save()
-
-    @classmethod
-    def get_images_by_id(cls,id):
-        fetched_image = Image.objects.get(id = id)
-        return  fetched_image
-
     
 
 
