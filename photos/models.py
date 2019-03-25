@@ -34,23 +34,34 @@ class tags(models.Model):
         return self.name
 
 class Image(models.Model):
-    name = models.CharField(max_length=60)
-    caption = HTMLField()
-    user = models.ForeignKey(User,on_delete=models.CASCADE)  
-    profile = models.ManyToManyField(tags)
+    name = models.CharField(max_length = 30,null = True)
+    caption = models.TextField(null = True)
+    user = models.ForeignKey(User,null=True) 
+    # profile = models.ManyToManyField(tags)
     # pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/', blank=True)
 
-    @classmethod
-    def todays_photos(cls):
-        today = dt.date.today()
-        photos = cls.objects.filter(pub_date__date = today)
-        return photo
+    def __str__(self):
+    	return self.name
+
+    def delete_image(self):
+    	self.delete()
+
+    def save_image(self):
+    	self.save()
 
     @classmethod
-    def days_photos(cls,date):
-        photos = cls.objects.filter(pub_date__date = date)
-        return photos 
+    def get_images_by_id(cls,id):
+        fetched_image = Image.objects.get(id = id)
+        return  fetched_image
+
+    
+
+
+    def __str__(self):
+    	return self.user.username
+
+    
     @classmethod
     def search_by_name(cls,search_term):
         photos = cls.objects.filter(name__icontains=search_term)
