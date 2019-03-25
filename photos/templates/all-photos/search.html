@@ -16,8 +16,8 @@
   {% if images %}
     {% for image in images %}
       <div class="col-sm-6 col-md-3">
-          <h1>{{image.title}}</h1>
-          <img src="{{image.gallery_image.url}}"  class="img-responsive" alt="">
+          <h1>{{image.name}}</h1>
+          <img src="{{image.image.url}}"  class="img-responsive" alt="">
           <strong>Post:</strong> {{image.post}}
           <br>
           <strong>Editor:</strong>{{image.editor}}

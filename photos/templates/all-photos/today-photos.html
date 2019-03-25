@@ -5,7 +5,7 @@
 <div class="container">
 
   <!-- Looping through photos   -->
-  <div class="container-fluid">
+  <!-- <div class="container-fluid">
 
     <form  action="{%url 'photosToday'%}" method="post">
       {%csrf_token%}
@@ -14,17 +14,17 @@
       <input type="submit" value="Subscribe">
     </form>
   
-  </div>
+  </div> -->
   {% for photos_item in photos %}
 
   <div class="row">
-    <!-- displaying Photos articles -->
+    <!-- displaying Photos image -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <h2 class="text-center"> {{ photos_item.title }} </h2>
     </div>
-    <!--Display photos Gallery images  -->
+    <!--Display photos images  -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <img src="{{image.gallery_image.url}}"  class="img-responsive" alt="Image">
+      <img src="{{image.image.url}}"  class="img-responsive" alt="Image">
     </div>
 
   </div>
