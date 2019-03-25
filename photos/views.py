@@ -9,9 +9,10 @@ from django.contrib.auth.decorators import login_required
 def welcome(request):
     return render(request, 'all-photos/today-photos.html', {"date": date,})
 
+@login_required(login_url='/accounts/login/')
 def photos_today(request):
     date = dt.date.today()
-    # photos = Image.todays_photos()
+    # image = Image.today-photos()
     if request.method == 'POST':
         form = PhotosLetterForm(request.POST)
         if form.is_valid():
