@@ -36,7 +36,7 @@ class tags(models.Model):
 class Image(models.Model):
     name = models.CharField(max_length = 30,null = True)
     caption = models.TextField(null = True)
-    user = models.ForeignKey(User,null=True) 
+    user = models.ForeignKey(User,null=True)
     # profile = models.ManyToManyField(tags)
     # pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/', blank=True)
