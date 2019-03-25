@@ -72,7 +72,7 @@ def new_image(request):
         form = NewImageForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.save(commit=False)
-            image.editor = current_user
+            image.user = current_user
       
         return redirect('photosToday')
 
