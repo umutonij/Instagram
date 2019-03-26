@@ -84,7 +84,7 @@ def upload_profile(request):
     current_user = request.user
     title = 'Upload Profile'
     try:
-        # requested_profile = Profile.objects.get(user_id = current_user.id)
+        profile = Profile.objects.get(user_id = current_user.id)
         if request.method == 'POST':
             form = ProfileUploadForm(request.POST,request.FILES)
 
@@ -109,10 +109,3 @@ def upload_profile(request):
 
     return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
 
-@login_required(login_url='/accounts/login/')
-def profile(request):
-	 current_user = request.user
-	 profile = Profile.objects.all()
-	 
-
-	 return render(request, 'profile.html',{"current_user":current_user,"profile":profile,"follower":follower})
