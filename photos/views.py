@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 import datetime as dt
-from .models import Image, PhotosLetterRecipients
+from .models import Image, PhotosLetterRecipients, Profile
 from .forms import PhotosLetterForm,NewImageForm,ProfileUploadForm
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
@@ -91,16 +91,15 @@ def upload_profile(request):
     current_user = request.user
     title = 'Upload Profile'
     try:
-        requested_profile = Profile.objects.get(user_id = current_user.id)
+        # requested_profile = Profile.objects.get(user_id = current_user.id)
         if request.method == 'POST':
             form = ProfileUploadForm(request.POST,request.FILES)
 
             if form.is_valid():
-                requested_profile.profile_pic = form.cleaned_data['image']
-                requested_profile.bio = form.cleaned_data['bio']
-                requested_profile.username = form.cleaned_data['username']
-                requested_profile.save_profile()
-                return redirect( profile )
+                profile = form.save(commit=False)
+                profile.user = current_user
+                profile.save()
+            return redirect('photosToday')
         else:
             form = ProfileUploadForm()
     except:
@@ -108,8 +107,8 @@ def upload_profile(request):
             form = ProfileUploadForm(request.POST,request.FILES)
 
             if form.is_valid():
-                new_profile = Profile(image = form.cleaned_data['image'],bio = form.cleaned_data['bio'],username = form.cleaned_data['username'])
-                new_profile.save_profile()
+                profile = Profile(image = form.cleaned_data['image'],bio = form.cleaned_data['bio'],username = form.cleaned_data['username'])
+                profile.save()
                 return redirect( profile )
         else:
             form = ProfileUploadForm()

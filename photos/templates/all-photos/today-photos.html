@@ -8,8 +8,13 @@
     {%for images in images%}
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="margin-bottom: 20px;">
       <img style=" margin-top: 20px; margin-bottom: 20px; width:300px; height:200px; border-radius: 30px;" src="{{images.image.url}}"  class="img-responsive" alt="Image">
+      <strong>Name:</strong> {{image.name}}
+          <br>
+          <strong>Caption:</strong>{{image.caption}}
+          <br>
       <button class="btn btn-danger"  >Comment</button>
       <input  id="{{images.id}}-url" >
+      
     </div>
 {%endfor%}
   </div>

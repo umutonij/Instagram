@@ -7,17 +7,17 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
 class Profile(models.Model):
-    username = models.CharField(default='User',max_length=30)
-    bio = models.CharField(max_length =30)
+    username = models.CharField(default='User',max_length=30,null = True)
+    bio = models.CharField(max_length =30,null = True)
     image = models.ImageField(upload_to='images/', blank=True)
-    first_name = models.CharField(max_length =30)
-    last_name = models.CharField(max_length =30)
+    first_name = models.CharField(max_length =30,null = True)
+    last_name = models.CharField(max_length =30,null = True)
 
     def __str__(self):
         return self.username
 
 class tags(models.Model):
-    name = models.CharField(max_length =30)
+    name = models.CharField(max_length =30,null = True)
     
 
     def __str__(self):
@@ -60,5 +60,5 @@ class Image(models.Model):
         return photos
 
 class PhotosLetterRecipients(models.Model):
-    name = models.CharField(max_length = 30)
+    name = models.CharField(max_length = 30,null = True)
     email = models.EmailField() 
