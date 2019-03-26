@@ -13,7 +13,8 @@ from django.contrib.auth.decorators import login_required
 def photos_today(request):
     date = dt.date.today()
     all_images = Image.all_images()
-    print(all_images)
+    images= Image.objects.all()
+    print(images)
     # image = Image.today-photos()
     if request.method == 'POST':
         form = PhotosLetterForm(request.POST)
@@ -29,7 +30,7 @@ def photos_today(request):
     else:
         form = PhotosLetterForm()
         form = NewImageForm()
-    return render(request, 'all-photos/today-photos.html', {"date": date,"letterForm":form, "ImageForm":form, "images":all_images})
+    return render(request, 'all-photos/today-photos.html', {"date": date,"letterForm":form, "ImageForm":form, "images":all_images},{'images':images})
 
 
 def past_days_photos(request, past_date):
