@@ -72,6 +72,7 @@ def image(request,image_id):
 @login_required(login_url='/accounts/login/')
 def new_image(request):
     current_user = request.user
+    title = 'New image'
     if request.method == 'POST':
         form = NewImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -82,4 +83,4 @@ def new_image(request):
 
     else:
         form = NewImageForm()
-    return render(request, 'new_image.html', {"form": form})
+    return render(request, 'new_image.html', {"form": form,"current_user":current_user,"title":title})
