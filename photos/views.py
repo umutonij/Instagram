@@ -14,6 +14,7 @@ def photos_today(request):
     date = dt.date.today()
     all_images = Image.all_images()
     images= Image.objects.all()
+    profile = Profile.objects.all()
     print(images)
     # image = Image.today-photos()
     if request.method == 'POST':
@@ -30,7 +31,7 @@ def photos_today(request):
     else:
         form = PhotosLetterForm()
         form = NewImageForm()
-    return render(request, 'all-photos/today-photos.html', {"date": date,"letterForm":form, "ImageForm":form, "images":all_images},{'images':images})
+    return render(request, 'all-photos/today-photos.html', {"date": date,"letterForm":form, "ImageForm":form, "images":all_images},{'images':images,'profile':profile})
 
 
 def past_days_photos(request, past_date):
@@ -84,7 +85,7 @@ def upload_profile(request):
     current_user = request.user
     title = 'Upload Profile'
     try:
-        profile = Profile.objects.get(user_id = current_user.id)
+        # profile = Profile.objects.get(user_id = current_user.id)
         if request.method == 'POST':
             form = ProfileUploadForm(request.POST,request.FILES)
 
