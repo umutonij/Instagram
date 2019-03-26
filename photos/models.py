@@ -7,11 +7,15 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
 class Profile(models.Model):
+    username = models.CharField(default='User',max_length=30)
     bio = models.CharField(max_length =30)
     image = models.ImageField(upload_to='images/', blank=True)
+    first_name = models.CharField(max_length =30)
+    last_name = models.CharField(max_length =30)
 
     def __str__(self):
-        return self.bio
+        return self.username
+
 class tags(models.Model):
     name = models.CharField(max_length =30)
     
