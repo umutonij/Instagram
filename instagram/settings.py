@@ -35,7 +35,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
-    'tinymce',
+   
     'bootstrap3',
     'photos.apps.PhotosConfig',
     'django.contrib.admin',
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
 #        'default': {
 #            'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #            'NAME': config('DB_NAME'),
