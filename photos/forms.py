@@ -12,6 +12,11 @@ class NewImageForm(forms.ModelForm):
         # widgets = {
         #     'profile': forms.CheckboxSelectMultiple(),
         # }
+class ProfileUploadForm(forms.ModelForm):
+	class Meta:
+		model = Profile
+		
+		exclude = ['user']
 class ProfileForm(forms.ModelForm):
 	model = Profile
 	username = forms.CharField(label='Username',max_length = 30)
