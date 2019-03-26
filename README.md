@@ -24,3 +24,13 @@ The Instagram app is a web application that helps users to view different photos
 * pytz==2018.9
 
 * you can even check my application through : https://appgallery1.herokuapp.com/
+
+## Support and contact details
+
+If you want any help,support or you want to give a comment you can contact me on:
+
+* E-mail:jacquelineumutoni13@gmail.com
+* Phone:0787683456
+
+## License
+MIT Copyright (c) 2019 UMUTONI Jacqueline
