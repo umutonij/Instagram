@@ -1,10 +1,7 @@
 from django.contrib import admin
-# from .models import Image,Profile
-# # Register your models here.
+from .models import Image,Profile
 
-# class ImageAdmin(admin.ModelAdmin):
-#     filter_horizontal =('profile',)
+# Register your models here.
 
-# # admin.site.register(Editor)
-# admin.site.register(Image,ImageAdmin)
-# # admin.site.register(profile)
+admin.site.register(Image)
+admin.site.register(Profile)

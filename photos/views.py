@@ -6,12 +6,14 @@ from .forms import PhotosLetterForm,NewImageForm
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-def welcome(request):
-    return render(request, 'all-photos/today-photos.html', {"date": date,})
+# def welcome(request):
+#     return render(request, 'all-photos/today-photos.html', {"date": date,})
 
 @login_required(login_url='/accounts/login/')
 def photos_today(request):
     date = dt.date.today()
+    all_images = Image.all_images()
+    print(all_images)
     # image = Image.today-photos()
     if request.method == 'POST':
         form = PhotosLetterForm(request.POST)
@@ -26,7 +28,8 @@ def photos_today(request):
             HttpResponseRedirect('photos_today')
     else:
         form = PhotosLetterForm()
-    return render(request, 'all-photos/today-photos.html', {"date": date,"letterForm":form})
+        form = NewImageForm()
+    return render(request, 'all-photos/today-photos.html', {"date": date,"letterForm":form, "ImageForm":form, "images":all_images})
 
 
 def past_days_photos(request, past_date):

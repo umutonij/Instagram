@@ -5,24 +5,10 @@ from django.db import models
 import datetime as dt
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
-# Create your models here.
-# class User(models.Model):
-#     first_name = models.CharField(max_length =30)
-#     last_name = models.CharField(max_length =30)
-#     email = models.EmailField()
-#     phone_number = models.CharField(max_length = 10,blank =True)
-
-#     def __str__(self):
-#         return self.first_name
-
-#     def save_user(self):
-#         self.save()
-
-
 
 class Profile(models.Model):
     bio = models.CharField(max_length =30)
-    photo = models.ImageField(upload_to='images/', blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
 
     def __str__(self):
         return self.bio
@@ -49,9 +35,17 @@ class Image(models.Model):
 
     def save_image(self):
     	self.save()
+
+    @classmethod
+    def all_images(cls):
+        images = cls.objects.all()
+        return images 
+
+    @classmethod
+    def get_image(cls, id):
+        image = cls.objects.get(id=id)
+        return image
     
-
-
     def __str__(self):
     	return self.user.username
 

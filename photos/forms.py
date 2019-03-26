@@ -1,5 +1,5 @@
 from django import forms
-from .models import Image
+from .models import Image,Profile
 
 class PhotosLetterForm(forms.Form):
     name = forms.CharField(label='First Name',max_length=30)
@@ -12,3 +12,9 @@ class NewImageForm(forms.ModelForm):
         # widgets = {
         #     'profile': forms.CheckboxSelectMultiple(),
         # }
+class ProfileForm(forms.ModelForm):
+	model = Profile
+	username = forms.CharField(label='Username',max_length = 30)
+	
+	bio = forms.CharField(label='Image Caption',max_length=500)
+	image = forms.ImageField(label = 'Image Field')
