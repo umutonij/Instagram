@@ -23,8 +23,7 @@ The Instagram app is a web application that helps users to view different photos
 * psycopg2==2.7.7
 * pytz==2018.9
 
-* you can even check my application through : https://appgallery1.herokuapp.com/
-
+* you can even check my application through : https://instagramapp7.herokuapp.com/
 ## Support and contact details
 
 If you want any help,support or you want to give a comment you can contact me on:
